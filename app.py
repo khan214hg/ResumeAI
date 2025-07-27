@@ -18,6 +18,331 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Custom CSS for modern design
+st.markdown("""
+<style>
+/* Modern CSS Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Custom CSS Variables */
+:root {
+    --primary-color: #6366f1;
+    --primary-hover: #4f46e5;
+    --secondary-color: #f8fafc;
+    --accent-color: #10b981;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --radius: 12px;
+    --radius-sm: 8px;
+}
+
+/* Global Styles */
+.main {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 0;
+}
+
+/* Header Styles */
+.header-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem 0;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.header-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header-title {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.header-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Card Styles */
+.card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.card-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+    background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* Button Styles */
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), #8b5cf6);
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary-hover), #7c3aed);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Input Styles */
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.input-field {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Status Indicators */
+.status-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+}
+
+.status-success {
+    background: var(--accent-color);
+}
+
+.status-error {
+    background: #ef4444;
+}
+
+.status-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* File Upload Area */
+.upload-area {
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: center;
+    background: var(--secondary-color);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.upload-area:hover {
+    border-color: var(--primary-color);
+    background: rgba(99, 102, 241, 0.05);
+}
+
+.upload-icon {
+    font-size: 3rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+/* Results Section */
+.results-container {
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-top: 1rem;
+}
+
+.suggestion-card {
+    background: white;
+    border-radius: var(--radius-sm);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--primary-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.suggestion-number {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-right: 0.75rem;
+}
+
+/* Sidebar Styles */
+.sidebar-container {
+    background: white;
+    border-right: 1px solid var(--border-color);
+    padding: 1.5rem;
+}
+
+.sidebar-header {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--secondary-color);
+}
+
+.sidebar-section {
+    margin-bottom: 2rem;
+}
+
+.sidebar-section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-section-icon {
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+}
+
+/* Loading Animation */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-title {
+        font-size: 2rem;
+    }
+    
+    .card {
+        padding: 1.5rem;
+    }
+    
+    .upload-area {
+        padding: 1.5rem;
+    }
+}
+
+/* Hide Streamlit default elements */
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--secondary-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+</style>
+""", unsafe_allow_html=True)
+
 def initialize_session_state():
     """Initialize session state variables"""
     if 'azure_doc_endpoint' not in st.session_state:
@@ -34,6 +359,10 @@ def initialize_session_state():
         st.session_state.extracted_text = ""
     if 'feedback_suggestions' not in st.session_state:
         st.session_state.feedback_suggestions = []
+    if 'job_comparison' not in st.session_state:
+        st.session_state.job_comparison = None
+    if 'job_description' not in st.session_state:
+        st.session_state.job_description = ""
 
 def extract_text_from_pdf(file_content: bytes) -> str:
     """Extract text from PDF using PyPDF2 as fallback"""
@@ -164,54 +493,152 @@ def get_resume_feedback(
         st.error(f"Error getting feedback from Azure OpenAI: {str(e)}")
         return None
 
+def compare_resume_with_job(
+    resume_text: str,
+    job_description: str,
+    endpoint: str,
+    api_key: str,
+    deployment_name: str
+) -> Optional[dict]:
+    """Compare resume with job description and provide match score"""
+    try:
+        client = AzureOpenAI(
+            azure_endpoint=endpoint,
+            api_key=api_key,
+            api_version="2024-02-01"
+        )
+        
+        prompt = f"""
+        Please analyze how well the following resume matches the job description and provide:
+        1. A match score out of 100 (be realistic and fair)
+        2. A brief explanation (2-3 sentences) of why this score was given
+        3. Key strengths that align with the job requirements
+        4. Areas that could be improved to better match the job
+        
+        Resume:
+        {resume_text}
+        
+        Job Description:
+        {job_description}
+        
+        Please format your response as:
+        SCORE: [number]/100
+        EXPLANATION: [brief explanation]
+        STRENGTHS: [key strengths]
+        IMPROVEMENTS: [areas to improve]
+        """
+        
+        response = client.chat.completions.create(
+            model=deployment_name,
+            messages=[
+                {"role": "system", "content": "You are a professional recruiter and career advisor with expertise in resume-job matching."},
+                {"role": "user", "content": prompt}
+            ],
+            max_tokens=800,
+            temperature=0.5
+        )
+        
+        analysis_text = response.choices[0].message.content
+        
+        # Parse the response
+        result = {}
+        lines = analysis_text.strip().split('\n')
+        
+        for line in lines:
+            line = line.strip()
+            if line.startswith('SCORE:'):
+                score_text = line.replace('SCORE:', '').strip()
+                try:
+                    result['score'] = int(score_text.split('/')[0])
+                except:
+                    result['score'] = 0
+            elif line.startswith('EXPLANATION:'):
+                result['explanation'] = line.replace('EXPLANATION:', '').strip()
+            elif line.startswith('STRENGTHS:'):
+                result['strengths'] = line.replace('STRENGTHS:', '').strip()
+            elif line.startswith('IMPROVEMENTS:'):
+                result['improvements'] = line.replace('IMPROVEMENTS:', '').strip()
+        
+        return result
+    
+    except Exception as e:
+        st.error(f"Error comparing resume with job description: {str(e)}")
+        return None
+
 def main():
     initialize_session_state()
     
-    # Header
-    st.title("📄 ResumeAI")
-    st.markdown("**AI-Powered Resume Analysis Tool**")
-    st.markdown("Upload your resume and get intelligent feedback to improve it!")
+    # Modern Header
+    st.markdown("""
+    <div class="header-container">
+        <div class="header-content">
+            <h1 class="header-title">ResumeAI</h1>
+            <p class="header-subtitle">AI-Powered Resume Analysis Tool</p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
     
-    # Sidebar for Azure credentials
+    # Sidebar with modern styling
     with st.sidebar:
-        st.header("🔑 Azure Configuration")
-        st.markdown("Configure your Azure services credentials:")
+        st.markdown("""
+        <div class="sidebar-container">
+            <div class="sidebar-header">🔑 Azure Configuration</div>
+        </div>
+        """, unsafe_allow_html=True)
         
         # Azure Document Intelligence
-        st.subheader("Document Intelligence")
+        st.markdown("""
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">
+                <span class="sidebar-section-icon">📄</span>
+                Document Intelligence
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
         st.session_state.azure_doc_endpoint = st.text_input(
-            "Azure Document Intelligence Endpoint",
+            "Endpoint",
             value=st.session_state.azure_doc_endpoint,
-            type="default",
-            help="e.g., https://your-resource.cognitiveservices.azure.com/"
+            placeholder="https://your-resource.cognitiveservices.azure.com/",
+            help="Azure Document Intelligence endpoint"
         )
         st.session_state.azure_doc_key = st.text_input(
-            "Azure Document Intelligence API Key",
+            "API Key",
             value=st.session_state.azure_doc_key,
-            type="password"
+            type="password",
+            placeholder="Enter your API key"
         )
         
         # Azure OpenAI
-        st.subheader("Azure OpenAI")
+        st.markdown("""
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">
+                <span class="sidebar-section-icon">🤖</span>
+                Azure OpenAI
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
         st.session_state.azure_openai_endpoint = st.text_input(
-            "Azure OpenAI Endpoint",
+            "Endpoint",
             value=st.session_state.azure_openai_endpoint,
-            type="default",
-            help="e.g., https://your-resource.openai.azure.com/"
+            placeholder="https://your-resource.openai.azure.com/",
+            help="Azure OpenAI endpoint"
         )
         st.session_state.azure_openai_key = st.text_input(
-            "Azure OpenAI API Key",
+            "API Key",
             value=st.session_state.azure_openai_key,
-            type="password"
+            type="password",
+            placeholder="Enter your API key"
         )
         st.session_state.azure_openai_deployment = st.text_input(
-            "Azure OpenAI Deployment Name",
+            "Deployment Name",
             value=st.session_state.azure_openai_deployment,
-            type="default",
-            help="e.g., gpt-35-turbo, gpt-4"
+            placeholder="gpt-35-turbo, gpt-4",
+            help="Your deployed model name"
         )
         
-        # Validation status
+        # Configuration status
         st.markdown("---")
         doc_intel_configured = bool(st.session_state.azure_doc_endpoint and st.session_state.azure_doc_key)
         openai_configured = bool(
@@ -221,14 +648,32 @@ def main():
         )
         
         st.markdown("**Configuration Status:**")
-        st.markdown(f"Document Intelligence: {'✅' if doc_intel_configured else '❌'}")
-        st.markdown(f"Azure OpenAI: {'✅' if openai_configured else '❌'}")
+        st.markdown(f"""
+        <div class="status-container">
+            <div class="status-indicator {'status-success' if doc_intel_configured else 'status-error'}"></div>
+            <span class="status-text">Document Intelligence</span>
+        </div>
+        """, unsafe_allow_html=True)
+        st.markdown(f"""
+        <div class="status-container">
+            <div class="status-indicator {'status-success' if openai_configured else 'status-error'}"></div>
+            <span class="status-text">Azure OpenAI</span>
+        </div>
+        """, unsafe_allow_html=True)
     
     # Main content area
     col1, col2 = st.columns([1, 2])
     
     with col1:
-        st.header("📁 Upload Resume")
+        st.markdown("""
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">📁</span>
+                <h2 class="card-title">Upload Resume</h2>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
         uploaded_file = st.file_uploader(
             "Choose your resume file",
             type=['pdf', 'docx', 'txt'],
@@ -236,17 +681,17 @@ def main():
         )
         
         if uploaded_file is not None:
-            st.success(f"File uploaded: {uploaded_file.name}")
-            st.info(f"File size: {uploaded_file.size} bytes")
+            st.markdown(f"""
+            <div class="upload-area">
+                <div class="upload-icon">✅</div>
+                <h3>File Uploaded Successfully</h3>
+                <p><strong>{uploaded_file.name}</strong></p>
+                <p>Size: {uploaded_file.size} bytes</p>
+            </div>
+            """, unsafe_allow_html=True)
             
             # Analyze button
-            analyze_button = st.button(
-                "🔍 Analyze Resume",
-                type="primary",
-                use_container_width=True
-            )
-            
-            if analyze_button:
+            if st.button("🔍 Analyze Resume", type="primary", use_container_width=True):
                 if not openai_configured:
                     st.error("❌ Please configure Azure OpenAI credentials in the sidebar first.")
                     return
@@ -297,9 +742,59 @@ def main():
                             st.error("❌ Failed to get feedback from Azure OpenAI.")
                     else:
                         st.error("❌ Failed to extract text from the uploaded file.")
+        
+        # Job Description Comparison Section
+        st.markdown("""
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">🎯</span>
+                <h2 class="card-title">Job Description Comparison</h2>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.session_state.job_description = st.text_area(
+            "Paste Job Description",
+            value=st.session_state.job_description,
+            height=200,
+            placeholder="Paste the job description here to compare with your resume...",
+            help="Enter the complete job description to get a match score and analysis"
+        )
+        
+        if st.session_state.job_description.strip() and st.session_state.extracted_text:
+            if st.button("🎯 Compare Resume & Job", type="secondary", use_container_width=True):
+                if not openai_configured:
+                    st.error("❌ Please configure Azure OpenAI credentials in the sidebar first.")
+                    return
+                
+                with st.spinner("Comparing resume with job description..."):
+                    comparison_result = compare_resume_with_job(
+                        st.session_state.extracted_text,
+                        st.session_state.job_description,
+                        st.session_state.azure_openai_endpoint,
+                        st.session_state.azure_openai_key,
+                        st.session_state.azure_openai_deployment
+                    )
+                    
+                    if comparison_result:
+                        st.session_state.job_comparison = comparison_result
+                        st.success("✅ Job comparison completed!")
+                    else:
+                        st.error("❌ Failed to compare resume with job description.")
+        elif st.session_state.job_description.strip() and not st.session_state.extracted_text:
+            st.warning("⚠️ Please upload and analyze a resume first to enable comparison.")
+        elif not st.session_state.job_description.strip():
+            st.info("💡 Paste a job description above to compare with your resume.")
     
     with col2:
-        st.header("📊 Analysis Results")
+        st.markdown("""
+        <div class="card">
+            <div class="card-header">
+                <span class="card-icon">📊</span>
+                <h2 class="card-title">Analysis Results</h2>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
         
         if st.session_state.extracted_text:
             # Display extracted text in expandable section
@@ -311,18 +806,104 @@ def main():
                     disabled=True
                 )
             
-            # Display feedback suggestions
+            # Display feedback suggestions with modern styling
             if st.session_state.feedback_suggestions:
-                st.subheader("💡 AI Feedback Suggestions")
-                st.markdown("Here are 3 specific recommendations to improve your resume:")
+                st.markdown("""
+                <div class="results-container">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--text-primary); font-weight: 700;">
+                        💡 AI Feedback Suggestions
+                    </h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Here are 3 specific recommendations to improve your resume:
+                    </p>
+                </div>
+                """, unsafe_allow_html=True)
                 
                 for i, suggestion in enumerate(st.session_state.feedback_suggestions, 1):
-                    with st.container():
-                        st.markdown(f"**Suggestion {i}:**")
-                        st.markdown(suggestion)
-                        st.markdown("---")
+                    st.markdown(f"""
+                    <div class="suggestion-card">
+                        <div style="display: flex; align-items: flex-start;">
+                            <span class="suggestion-number">{i}</span>
+                            <div style="flex: 1;">
+                                <p style="margin: 0; line-height: 1.6; color: var(--text-primary);">
+                                    {suggestion}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
+            
+            # Display job comparison results
+            if st.session_state.job_comparison:
+                st.markdown("""
+                <div class="results-container">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--text-primary); font-weight: 700;">
+                        🎯 Job Match Analysis
+                    </h3>
+                </div>
+                """, unsafe_allow_html=True)
+                
+                # Score display with visual indicator
+                score = st.session_state.job_comparison.get('score', 0)
+                score_color = "#10b981" if score >= 80 else "#f59e0b" if score >= 60 else "#ef4444"
+                
+                st.markdown(f"""
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <div style="font-size: 3rem; font-weight: 800; color: {score_color}; margin-bottom: 0.5rem;">
+                        {score}/100
+                    </div>
+                    <div style="font-size: 1.2rem; color: var(--text-secondary); font-weight: 600;">
+                        Match Score
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+                
+                # Explanation
+                if st.session_state.job_comparison.get('explanation'):
+                    st.markdown("""
+                    <div class="suggestion-card">
+                        <h4 style="margin: 0 0 1rem 0; color: var(--text-primary); font-weight: 600;">
+                            📝 Analysis
+                        </h4>
+                        <p style="margin: 0; line-height: 1.6; color: var(--text-primary);">
+                            """ + st.session_state.job_comparison['explanation'] + """
+                        </p>
+                    </div>
+                    """, unsafe_allow_html=True)
+                
+                # Strengths
+                if st.session_state.job_comparison.get('strengths'):
+                    st.markdown("""
+                    <div class="suggestion-card">
+                        <h4 style="margin: 0 0 1rem 0; color: var(--text-primary); font-weight: 600;">
+                            ✅ Key Strengths
+                        </h4>
+                        <p style="margin: 0; line-height: 1.6; color: var(--text-primary);">
+                            """ + st.session_state.job_comparison['strengths'] + """
+                        </p>
+                    </div>
+                    """, unsafe_allow_html=True)
+                
+                # Areas for improvement
+                if st.session_state.job_comparison.get('improvements'):
+                    st.markdown("""
+                    <div class="suggestion-card">
+                        <h4 style="margin: 0 0 1rem 0; color: var(--text-primary); font-weight: 600;">
+                            🔧 Areas to Improve
+                        </h4>
+                        <p style="margin: 0; line-height: 1.6; color: var(--text-primary);">
+                            """ + st.session_state.job_comparison['improvements'] + """
+                        </p>
+                    </div>
+                    """, unsafe_allow_html=True)
         else:
-            st.info("👆 Upload a resume file and click 'Analyze Resume' to see results here.")
+            st.markdown("""
+            <div class="upload-area">
+                <div class="upload-icon">👆</div>
+                <h3>Ready to Analyze</h3>
+                <p>Upload a resume file and click 'Analyze Resume' to see results here.</p>
+            </div>
+            """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main() 
